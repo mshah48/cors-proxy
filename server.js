@@ -28,9 +28,9 @@ app.all('*', function (req, res, next) {
         if(req.header('WebApiAuthTicket')) headers['WebApiAuthTicket'] = req.header('WebApiAuthTicket');
         if(req.header('Accept')) headers['Accept'] = req.header('Accept');        
         if(req.header('Content-Type')) headers['Content-Type'] = req.header('Content-Type');        
-        if(req.header('webapiauthticket')) headers['webapiauthticket'] = req.header('webapiauthticket');
-        if(req.header('accept')) headers['accept'] = req.header('accept');        
-        if(req.header('content-type')) headers['content-type'] = req.header('content-type');        
+        if(req.header('webapiauthticket')) headers['WebApiAuthTicket'] = req.header('webapiauthticket');
+        if(req.header('accept')) headers['Accept'] = req.header('accept');        
+        if(req.header('content-type')) headers['Content-Type'] = req.header('content-type');        
         request({ url: targetURL + req.url, method: req.method, json: req.body, headers: headers},
             function (error, response, body) {
                 if (error) {
