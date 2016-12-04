@@ -24,7 +24,14 @@ app.all('*', function (req, res, next) {
             res.send(500, { error: 'There is no Target-Endpoint header in the request' });
             return;
         }
-        request({ url: targetURL + req.url, method: req.method, json: req.body, headers: req.headers},
+        var headers = {}
+        if(req.header('WebApiAuthTicket')) headers['WebApiAuthTicket'] = req.header('WebApiAuthTicket');
+        if(req.header('Accept')) headers['Accept'] = req.header('Accept');        
+        if(req.header('Content-Type')) headers['Content-Type'] = req.header('Content-Type');        
+        if(req.header('webapiauthticket')) headers['webapiauthticket'] = req.header('webapiauthticket');
+        if(req.header('accept')) headers['accept'] = req.header('accept');        
+        if(req.header('content-type')) headers['content-type'] = req.header('content-type');        
+        request({ url: targetURL + req.url, method: req.method, json: req.body, headers: headers},
             function (error, response, body) {
                 if (error) {
                     console.error('error: ' + response.statusCode)
