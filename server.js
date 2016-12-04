@@ -24,9 +24,7 @@ app.all('*', function (req, res, next) {
             res.send(500, { error: 'There is no Target-Endpoint header in the request' });
             return;
         }
-        var headers = {}
-        if(req.header('WebApiAuthTicket')) headers['WebApiAuthTicket'] = req.header('WebApiAuthTicket');
-        request({ url: targetURL + req.url, method: req.method, json: req.body, headers: headers},
+        request({ url: targetURL + req.url, method: req.method, json: req.body, headers: req.headers},
             function (error, response, body) {
                 if (error) {
                     console.error('error: ' + response.statusCode)
