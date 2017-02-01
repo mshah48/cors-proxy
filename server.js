@@ -26,6 +26,10 @@ app.all('*', function (req, res, next) {
         }
         var headers = {}
         if(req.header('WebApiAuthTicket')) headers['WebApiAuthTicket'] = req.header('WebApiAuthTicket');
+        if(req.header('deviceId')) headers['deviceId'] = req.header('deviceId');
+        if(req.header('deviceType')) headers['deviceType'] = req.header('deviceType');
+        if(req.header('userName')) headers['userName'] = req.header('userName');
+        if(req.header('password')) headers['password'] = req.header('password');
         if(req.header('Accept')) headers['Accept'] = req.header('Accept');        
         if(req.header('Content-Type')) headers['Content-Type'] = req.header('Content-Type');        
         if(req.header('webapiauthticket')) headers['WebApiAuthTicket'] = req.header('webapiauthticket');
