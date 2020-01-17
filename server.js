@@ -37,6 +37,7 @@ app.all('*', function (req, res, next) {
         if(req.header('content-type')) headers['Content-Type'] = req.header('content-type');        
         request({ url: targetURL + req.url, method: req.method, json: req.body, headers: headers},
             function (error, response, body) {
+                console.log(response);
                 if (error) {
                     console.error('error: ' + response.statusCode)
                 }
